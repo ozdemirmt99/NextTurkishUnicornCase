@@ -1,10 +1,22 @@
 import React, { Component } from 'react'
+import "./Container.css"
 
 export default class Container extends Component {
+  constructor(props) {
+    super(props);
+    this.state={}
+  }
   render() {
+    console.log(this.props.children);
     return (
         <>
-            Container
+            <div className="out-container">
+              <div className="main-container">
+                {this.props.children.map((e,i)=>{
+                  return (<div key={i}>{e}</div>);
+                })}
+              </div>
+            </div>
         </>
     )
   }
