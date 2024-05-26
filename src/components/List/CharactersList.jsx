@@ -5,7 +5,7 @@ export default class CharactersList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allChrachters: props.allChrachters ? props.allChrachters : [1],
+      allChrachters: props.allChrachters ? props.allChrachters : [1,2],
     };
   }
 
