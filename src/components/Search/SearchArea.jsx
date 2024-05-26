@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-
+import React, { Component } from "react";
+import { Select } from "antd";
 export default class SearchArea extends Component {
   render() {
-    return (
-        <>
-            SearchArea
-        </>
-    )
+    return <>
+      <Select mode="multiple">
+
+      </Select>
+    </>;
   }
 }
