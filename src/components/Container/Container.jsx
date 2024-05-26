@@ -12,13 +12,15 @@ export default class Container extends Component {
       <>
         <div className="out-container">
           <div className="main-container">
-            {this.props.children.map((e, i) => {
-              return (
-                <div className="container-item" key={i}>
-                  {e}
-                </div>
-              );
-            })}
+            {this.props.children
+            // .map((e, i) => {
+            //   return (
+            //     <div className="container-item" key={i}>
+            //       {e}
+            //     </div>
+            //   );
+            // })
+            }
           </div>
         </div>
       </>

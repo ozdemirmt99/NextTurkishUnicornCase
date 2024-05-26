@@ -5,7 +5,6 @@
     color: black;
     border-radius: 5px;
     border: 1px solid green;
-    justify-content: center;
     width: 100%;
 }
 
@@ -20,5 +19,7 @@
 }
 
 .container-item {
+    max-height: 25vh;
+    overflow-y: scroll;
     width: 100%;
 }
