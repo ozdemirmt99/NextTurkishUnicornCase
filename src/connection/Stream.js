@@ -27,6 +27,3 @@ const subQuery = async (url) => {
 
   return data ;
 };
-
-
-

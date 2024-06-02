@@ -3,6 +3,7 @@ import { List, Checkbox } from "antd";
 
 import "./ListItemMultiSelect.css";
 import { deepyCopy } from "../../common/Common";
+
 export default class ListItemMultiSelect extends Component {
   constructor(props) {
     super(props);
