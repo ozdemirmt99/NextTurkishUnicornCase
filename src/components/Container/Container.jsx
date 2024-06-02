@@ -7,7 +7,7 @@ export default class Container extends Component {
     this.state = {};
   }
   render() {
-    console.log(this.props.children);
+    // console.log(this.props.children);
     return (
       <>
         <div className="out-container">
