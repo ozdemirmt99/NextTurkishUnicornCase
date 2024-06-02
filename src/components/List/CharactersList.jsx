@@ -13,11 +13,13 @@ export default class CharactersList extends Component {
   render() {
     return (
       <>
-        <List className="main-character-list">
+      <div className="outliner-main-character-list">
+      <List className="main-character-list">
           {this.state.allChrachters.map(e=>{
-            return <ListItemMultiSelect />
+            return <ListItemMultiSelect main={e} id={e} />
           })}
         </List>
+      </div>
       </>
     );
   }

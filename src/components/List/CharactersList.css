@@ -1,5 +1,22 @@
 .main-character-list {
-    
-    
-    
+    max-height: 35vh;
+    overflow-y: scroll;
+    border: 1px solid gray;
+    border-radius: 15px;
 }
+
+ 
+ .main-character-list::-webkit-scrollbar{
+    
+    width: 5px;
+    background-color:  whitesmoke;
+ }
+
+ .main-character-list::-webkit-scrollbar-button {
+    display: none ;
+ }
+
+ .main-character-list::-webkit-scrollbar-thumb {
+    background: grey;
+    border-radius: 25px;
+ }
