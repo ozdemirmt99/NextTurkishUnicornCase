@@ -7,21 +7,22 @@ import { getChracters } from "./connection/Stream";
 
 function App() {
   const [allData, setAllData] = useState([]);
-  useEffect( () => {
-    const fetching= async()=>{
+  useEffect(() => {
+    const fetching = async () => {
       let all = await getChracters("ric");
-    setAllData(all);
-    }
-    fetching()
+
+      setAllData(all);
+    };
+
+    fetching();
   }, []);
-  //  let all = getChracters("ric")
-  //  console.log(all);
+
   return (
     <div className="App">
       <div className="App-header">
         <Container>
           <SearchArea />
-          <CharactersList allChrachters={allData}/>
+          <CharactersList allCharacter = {allData} />
         </Container>
       </div>
     </div>
