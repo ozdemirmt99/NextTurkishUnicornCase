@@ -8,23 +8,25 @@ import { getChracters } from "./connection/Stream";
 function App() {
   const [checkedCharacters, setCheckedCharacters] = useState([]);
   const [allData, setAllData] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
   /**
    * Fethinc Characters on API.
    */
   useEffect(() => {
     const fetching = async () => {
-      let all = await getChracters("ric");
+      let all = await getChracters(searchInput);
 
-      setAllData(all);
+      if(all)
+        setAllData(all);
     };
 
     fetching();
-  }, []);
+  }, [searchInput, allData]);
 
   /**
    * Uptading selected characters.
-   * @param {*} allCharacters 
+   * @param {*} allCharacters
    */
   const controlSelectedCharacters = (allCharacters) => {
     let checkedCharacters = allCharacters.filter((e) => e.isChecked);
@@ -36,7 +38,11 @@ function App() {
       <div className="App-header">
         <h1>Rick And Morty</h1>
         <Container>
-          <SearchArea />
+          <SearchArea
+            searchInput={searchInput}
+            searchInputOnchange={setSearchInput}
+            options={allData}
+          />
           <CharactersList
             allCharacter={allData}
             controlSelectedCharacters={controlSelectedCharacters}
