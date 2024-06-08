@@ -13,6 +13,30 @@ export default class CharactersList extends Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps !== this.state) {
+      this.setState(nextProps);
+    }
+  }
+
+  checker = (id, checkbox) => {
+    const { allCharacter } = this.state;
+    let newAllCharacter = [];
+
+    allCharacter.forEach((e) => {
+      if (e.id === id) {
+        e["isChecked"] = checkbox;
+      }
+
+      newAllCharacter.push(e);
+    });
+
+    this.setState(
+      { allCharacter: newAllCharacter },
+      this.props.controlSelectedCharacters(this.state.allCharacter)
+    );
+  };
+
   render() {
     const { allCharacter } = this.props;
     return (
@@ -25,6 +49,7 @@ export default class CharactersList extends Component {
                   character={char}
                   key={index}
                   searchInput="s"
+                  checker={this.checker}
                 />
               );
             })}
