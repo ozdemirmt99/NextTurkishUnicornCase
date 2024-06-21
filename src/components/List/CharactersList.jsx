@@ -13,10 +13,12 @@ export default class CharactersList extends Component {
     };
   }
 
+  
   componentWillReceiveProps(nextProps) {
     if (nextProps !== this.state) {
-      this.setState(nextProps);
+      
     }
+    this.setState(nextProps);
   }
 
   checker = (id, checkbox) => {
@@ -46,9 +48,10 @@ export default class CharactersList extends Component {
             {allCharacter.map((char, index) => {
               return (
                 <ListItemMultiSelect
+                  addOrRemoveCharacter={this.props.addOrRemoveCharacter}
                   character={char}
                   key={index}
-                  searchInput="s"
+                  searchInput={this.props.searchInput}
                   checker={this.checker}
                 />
               );

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { List, Checkbox } from "antd";
 import "./ListItemMultiSelect.css";
 import { deepyCopy } from "../../common/Common";
+import parse from 'html-react-parser';
 
 export default class ListItemMultiSelect extends Component {
   constructor(props) {
@@ -17,10 +18,12 @@ export default class ListItemMultiSelect extends Component {
   bolder = (searchInput, data) => {
     let currentCharacter = deepyCopy(data);
     let currentCharacterName = currentCharacter?.name;
+    
+    let result = currentCharacterName
+      ? currentCharacterName.replace(searchInput, <b>searchInput</b>)
+      : "undefined";
 
-    return currentCharacterName
-      ? currentCharacterName.replace(/searchInput/g, `<b>${searchInput}</b>`)
-      : "unde";
+    return parse(result);
   };
 
   episodeWriter = (character) => {
@@ -32,12 +35,13 @@ export default class ListItemMultiSelect extends Component {
   };
 
   onChecked = (status) => {
-    debugger;
     this.setState(
       {
         isChecked: status,
       },
-      () => this.props.checker(this.state.character.id, this.state.isChecked)
+      () => {this.props.checker(this.state.character.id, status)
+        this.props.addOrRemoveCharacter(this.props.character)
+      }
     );
   };
 

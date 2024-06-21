@@ -8,13 +8,16 @@ export default class SearchArea extends Component {
     this.state = {
       options: props.options,
       searchInput: props.searchInput,
+      checkedSearch: null,
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps !== this.state) {
-      this.setState(nextProps);
+      
     }
+    this.setState(nextProps);
+      this.checkedCharactersAddToSearch();
   }
 
   charactersOptionsModifier = (options) => {
@@ -31,12 +34,26 @@ export default class SearchArea extends Component {
     return optionsList;
   };
 
+  checkedCharactersAddToSearch = () => {
+    let values = [];
+
+    this.props.checkedCharacters.map((e) =>
+      values.push({ value: e.id, label: e.name })
+    );
+
+    this.setState({
+      checkedSearch: values.length > 0 ? values : null,
+    });
+  };
+
   render() {
+    
     return (
       <>
         <Select
-          dropdownStyle={{visibility:"hidden"}}
-          onSearch={(e)=>this.props.searchInputOnchange(e)}
+          value={this.state.checkedSearch}
+          dropdownStyle={{ visibility: "hidden" }}
+          onSearch={(e) => this.props.searchInputOnchange(e)}
           searchValue={this.props.searchInput}
           className="multiple-selection"
           mode="multiple"

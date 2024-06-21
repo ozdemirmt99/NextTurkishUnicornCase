@@ -2,20 +2,23 @@ import axios from "axios";
 
 const URL_BASE = "https://rickandmortyapi.com/api";
 const URL_CHARACTERS = URL_BASE + "/character/?name=";
-const URL_CHARACTERS_DEFAULT= URL_BASE + "/character/";
+const URL_CHARACTERS_DEFAULT = URL_BASE + "/character/";
 
 export const getChracters = async (searchName) => {
-  if (searchName !== "" && searchName !== null) {
-    let queryString = URL_CHARACTERS + searchName;
-    let allData = await subQuery(queryString);
+  try {
+    if (searchName !== "" && searchName !== null) {
+      let queryString = URL_CHARACTERS + searchName;
+      let allData = await subQuery(queryString);
 
-    return allData;
-  } else {
-    let queryString = URL_CHARACTERS_DEFAULT;
-    let allData = await axios.get(queryString);
-    
-debugger
-    return allData.data.results;
+      return allData;
+    } else {
+      let queryString = URL_CHARACTERS_DEFAULT;
+      let allData = await axios.get(queryString);
+
+      return allData.data.results;
+    }
+  } catch (error) {
+    console.log(error);
   }
 };
 
