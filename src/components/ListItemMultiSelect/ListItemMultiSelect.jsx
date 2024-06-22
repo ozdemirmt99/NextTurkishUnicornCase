@@ -14,6 +14,9 @@ export default class ListItemMultiSelect extends Component {
       isChecked: props.checked ? props.checked : false,
     };
   }
+  componentWillReceiveProps(nextProps){
+    this.setState(nextProps)
+  }
 
   bolder = (searchInput, data) => {
     let currentCharacter = deepyCopy(data);
@@ -61,7 +64,7 @@ export default class ListItemMultiSelect extends Component {
           <div className="list-item-context">
             <div className="checkbox-part">
               <Checkbox
-                checked={this.state.isChecked}
+                checked={this.state.character.isChecked}
                 onChange={(e) => this.onChecked(e.target.checked)}
               />
             </div>

@@ -14,10 +14,10 @@ export default class SearchArea extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps !== this.state) {
-      
     }
-    this.setState(nextProps);
+    this.setState(nextProps, () => {
       this.checkedCharactersAddToSearch();
+    });
   }
 
   charactersOptionsModifier = (options) => {
@@ -34,6 +34,14 @@ export default class SearchArea extends Component {
     return optionsList;
   };
 
+  uncheckedCharactersRemoveToSearch = (id) => {
+    let values = this.state.checkedSearch.filter((e) => e.value !== id);
+
+    this.setState({ checkedSearch: values.length > 0 ? values : null }, () => {
+      this.props.RemoveCharacterOnChecked(values);
+    });
+  };
+
   checkedCharactersAddToSearch = () => {
     let values = [];
 
@@ -47,7 +55,6 @@ export default class SearchArea extends Component {
   };
 
   render() {
-    
     return (
       <>
         <Select
@@ -57,7 +64,8 @@ export default class SearchArea extends Component {
           searchValue={this.props.searchInput}
           className="multiple-selection"
           mode="multiple"
-          options={this.charactersOptionsModifier(this.state.options)}
+          onDeselect={this.uncheckedCharactersRemoveToSearch}
+          // options={this.charactersOptionsModifier(this.state.options)}
         ></Select>
       </>
     );

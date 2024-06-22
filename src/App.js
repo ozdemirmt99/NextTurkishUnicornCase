@@ -16,9 +16,8 @@ function App() {
   useEffect(() => {
     const fetching = async () => {
       let all = await getChracters(searchInput);
-      console.log("fetching")
-      if(all)
-        setAllData(all);
+      console.log("fetching");
+      if (all) setAllData(all);
     };
 
     fetching();
@@ -36,15 +35,55 @@ function App() {
   const addOrRemoveCharacter = (character) => {
     let copyCheckedCharacters = [...checkedCharacters];
 
-    if(copyCheckedCharacters.includes(character)){
-      copyCheckedCharacters.pop(character)
-      setCheckedCharacters(copyCheckedCharacters)
+    if (copyCheckedCharacters.includes(character)) {
+      copyCheckedCharacters.pop(character);
+      setCheckedCharacters(copyCheckedCharacters);
 
       return;
     }
-    
+
     copyCheckedCharacters.push(character);
-  }
+  };
+
+  const removeCheckOnAllData = (checkList) => {
+    debugger;
+    let tempAllData = [...allData];
+    tempAllData.forEach((t, i) => {
+      let temp = checkList.filter((e) => e.value === t.id);
+      if (temp.length>0) {
+        tempAllData[i].isChecked = true;
+      } else {
+        tempAllData[i].isChecked = false;
+      }
+    });
+
+    // checkList.forEach((e) => {
+    //   tempAllData.forEach((t, index) => {
+    //     debugger;
+    //     if (t.id === e.value) {
+    //       tempAllData[index].isChecked = true;
+    //     } else {
+    //       tempAllData[index].isChecked = false;
+    //     }
+    //   });
+    // });
+    setAllData(tempAllData);
+  };
+
+  const RemoveCharacterOnChecked = (characters) => {
+    let newCheckedCharacters = [];
+
+    characters.forEach((e) => {
+      checkedCharacters.forEach((c) => {
+        if (c.id === e.value) {
+          newCheckedCharacters.push(c);
+        }
+      });
+    });
+
+    setCheckedCharacters(newCheckedCharacters);
+    removeCheckOnAllData(characters);
+  };
 
   return (
     <div className="App">
@@ -56,8 +95,10 @@ function App() {
             searchInput={searchInput}
             searchInputOnchange={setSearchInput}
             options={allData}
+            RemoveCharacterOnChecked={RemoveCharacterOnChecked}
           />
           <CharactersList
+            checkedCharacters={checkedCharacters}
             addOrRemoveCharacter={addOrRemoveCharacter}
             allCharacter={allData}
             controlSelectedCharacters={controlSelectedCharacters}

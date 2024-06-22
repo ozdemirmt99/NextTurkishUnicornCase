@@ -13,10 +13,8 @@ export default class CharactersList extends Component {
     };
   }
 
-  
   componentWillReceiveProps(nextProps) {
     if (nextProps !== this.state) {
-      
     }
     this.setState(nextProps);
   }
@@ -33,11 +31,12 @@ export default class CharactersList extends Component {
       newAllCharacter.push(e);
     });
 
-    this.setState(
-      { allCharacter: newAllCharacter },
-      this.props.controlSelectedCharacters(this.state.allCharacter)
-    );
+    this.setState({ allCharacter: newAllCharacter }, () => {
+      this.props.controlSelectedCharacters(this.state.allCharacter);
+    });
   };
+
+  
 
   render() {
     const { allCharacter } = this.props;
