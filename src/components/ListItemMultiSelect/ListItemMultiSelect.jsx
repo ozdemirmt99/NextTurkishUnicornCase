@@ -51,11 +51,7 @@ export default class ListItemMultiSelect extends Component {
 
   render() {
     const { character, searchInput } = this.props;
-    const name =
-      character && searchInput
-        ? this.bolder(searchInput, character)
-        : character.name;
-
+    
     return (
       <>
         <List.Item

@@ -1,4 +1,4 @@
-import parse, { domToReact } from "html-react-parser";
+import parse from "html-react-parser";
 
 const HighlightText = ( text, highlight ) => {
     debugger
