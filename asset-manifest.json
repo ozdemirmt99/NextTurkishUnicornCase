@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/NextTurkishUnicornCase/static/css/main.f315b74c.css",
+    "main.js": "/NextTurkishUnicornCase/static/js/main.e8b0d76e.js",
+    "static/js/453.0dafa52c.chunk.js": "/NextTurkishUnicornCase/static/js/453.0dafa52c.chunk.js",
+    "index.html": "/NextTurkishUnicornCase/index.html",
+    "main.f315b74c.css.map": "/NextTurkishUnicornCase/static/css/main.f315b74c.css.map",
+    "main.e8b0d76e.js.map": "/NextTurkishUnicornCase/static/js/main.e8b0d76e.js.map",
+    "453.0dafa52c.chunk.js.map": "/NextTurkishUnicornCase/static/js/453.0dafa52c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f315b74c.css",
+    "static/js/main.e8b0d76e.js"
+  ]
+}
