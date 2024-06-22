@@ -20,19 +20,19 @@ export default class SearchArea extends Component {
     });
   }
 
-  charactersOptionsModifier = (options) => {
-    let optionsList = [];
+  // charactersOptionsModifier = (options) => {
+  //   let optionsList = [];
 
-    options.forEach((option) => {
-      let newOption = {};
+  //   options.forEach((option) => {
+  //     let newOption = {};
 
-      newOption["label"] = option.name;
-      newOption["value"] = option.name;
-      optionsList.push(newOption);
-    });
+  //     newOption["label"] = option.name;
+  //     newOption["value"] = option.name;
+  //     optionsList.push(newOption);
+  //   });
 
-    return optionsList;
-  };
+  //   return optionsList;
+  // };
 
   uncheckedCharactersRemoveToSearch = (id) => {
     let values = this.state.checkedSearch.filter((e) => e.value !== id);

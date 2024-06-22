@@ -4,6 +4,7 @@ import "./ListItemMultiSelect.css";
 import { deepyCopy } from "../../common/Common";
 import parse from 'html-react-parser';
 
+import HighlightText from "../../common/HighlightText";
 export default class ListItemMultiSelect extends Component {
   constructor(props) {
     super(props);
@@ -77,7 +78,7 @@ export default class ListItemMultiSelect extends Component {
                 />
               </div>
               <div className="info-character-sub-titles">
-                <div>{name}</div>
+                <div>{HighlightText(character.name,searchInput)}</div>
                 <div>{this.episodeWriter(character)}</div>
               </div>
             </div>
